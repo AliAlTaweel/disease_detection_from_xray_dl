@@ -29,13 +29,10 @@ This project demonstrates how artificial intelligence can support medical diagno
 
 ### 2. Data Preprocessing
 
-- **Image Resizing**: Standardize all images (e.g., 150×150 or 224×224 pixels)
-- **Normalization**: Scale pixel values to [0, 1] range
-- **Data Augmentation**: Apply transformations to balance classes and improve generalization
-  - Random rotations
+- **Image Resizing**: Standardize all images to 224×224 pixels
+- **Normalization**: Scale pixel values to [-1, 1] range
+- **Data Augmentation**:
   - Horizontal flips
-  - Zoom variations
-  - Brightness adjustments
 
 ### 3. Model Building
 
@@ -103,7 +100,7 @@ chest-xray-detection/
 │    ├── styles.py
 │    ├── train.py
 │    └── models/
-│        └── pneumonia_model.h5   
+│        └── pneumonia_model.h5
 │
 ├── main.py
 ├── requirements.txt
