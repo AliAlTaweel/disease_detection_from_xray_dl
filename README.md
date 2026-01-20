@@ -97,14 +97,17 @@ chest-xray-detection/
 ├── notebooks/
 │   └── chest_xray_classification.ipynb
 │
-├── models/
-│   └── saved_model.h5
+├── src/
+│    ├── main.py
+│    ├── model_utils.py
+│    ├── styles.py
+│    ├── train.py
+│    └── models/
+│        └── pneumonia_model.h5   
 │
-├── results/
-│   ├── plots/
-│   └── metrics/
-│
+├── main.py
 ├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
