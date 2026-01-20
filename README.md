@@ -148,8 +148,6 @@ jupyter notebook notebooks/chest_xray_classification.ipynb
 
 ## 📈 Results
 
-## 📈 Results
-
 After implementing Transfer Learning (MobileNetV2) and addressing the validation set imbalance, the model achieved high diagnostic safety standards, particularly in minimizing missed cases.
 
 ### Final Metrics (Test Set)
