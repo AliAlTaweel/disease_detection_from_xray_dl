@@ -148,24 +148,29 @@ jupyter notebook notebooks/chest_xray_classification.ipynb
 
 ## 📈 Results
 
+## 📈 Results
+
+After implementing Transfer Learning (MobileNetV2) and addressing the validation set imbalance, the model achieved high diagnostic safety standards, particularly in minimizing missed cases.
+
+### Final Metrics (Test Set)
 | Metric | Score |
 |--------|-------|
-| Accuracy | X.XX% |
-| Precision | X.XX% |
-| Recall | X.XX% |
-| F1-Score | X.XX |
+| **Accuracy** | **81.7%** |
+| **Pneumonia Recall (Sensitivity)** | **98.9%** |
+| **Pneumonia Precision** | **77.8%** |
+| **False Negatives** | **4** (out of 390 cases) |
 
-*Note: Update with your actual results*
+### Performance Visualization
+The model demonstrated high stability during training after re-splitting the validation data:
+- **Recall Priority**: The model successfully prioritized identifying Pneumonia cases, missing only 4 out of 390 actual positive cases.
+- **Training Stability**: The Accuracy and Loss curves showed smooth convergence, indicating that the overfitting issue from earlier versions was resolved through Dropout (0.4) and Data Augmentation.
 
-## 🎓 Learning Outcomes
+## 🔍 Key Insights
 
-Through this project, you will:
-- Understand CNN architecture and how it applies to medical image classification
-- Learn to handle imbalanced datasets in real-world scenarios
-- Compare custom CNN models with transfer learning approaches
-- Interpret model performance using multiple evaluation metrics
-- Explore the ethical considerations of AI in healthcare
-- Gain experience with end-to-end deep learning project workflows
+- **Recall is King**: In medical AI, a False Negative (missing pneumonia) is more dangerous than a False Positive. This model achieved **~99% Recall**, making it a highly effective screening tool.
+- **The Validation Trap**: The original dataset's validation folder (16 images) was too small for reliable metrics. Creating a 20% validation split from the training directory was the "turning point" for model stability.
+- **Transfer Learning Power**: Moving from a shallow custom CNN to a pre-trained **MobileNetV2** architecture allowed the model to leverage complex feature extraction, drastically reducing the False Negative rate from 37% down to 1%.
+- **Normalization Matters**: Using the specific rescaling required by MobileNetV2 ($[-1, 1]$ range) significantly improved the convergence speed and final accuracy.
 
 ## 🔍 Key Insights
 
@@ -211,7 +216,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-**Your Name**
+**Ali Al-Taweel**
 - Email: alihaltaweel89@gmail.com
 
 
