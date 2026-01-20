@@ -11,6 +11,7 @@ This project demonstrates how artificial intelligence can support medical diagno
 **Source**: [Chest X-Ray Images (Pneumonia) - Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
 
 **Dataset Characteristics**:
+
 - Total images: 5,863
 - Classes: 2 (`NORMAL`, `PNEUMONIA`)
 - Split: Training, Validation, and Test sets
@@ -20,12 +21,14 @@ This project demonstrates how artificial intelligence can support medical diagno
 ## 🚀 Project Workflow
 
 ### 1. Data Exploration
+
 - Load and visualize sample X-ray images from both classes
 - Analyze class distribution across training, validation, and test sets
 - Identify dataset imbalances and characteristics
 - Examine image dimensions and quality
 
 ### 2. Data Preprocessing
+
 - **Image Resizing**: Standardize all images (e.g., 150×150 or 224×224 pixels)
 - **Normalization**: Scale pixel values to [0, 1] range
 - **Data Augmentation**: Apply transformations to balance classes and improve generalization
@@ -37,6 +40,7 @@ This project demonstrates how artificial intelligence can support medical diagno
 ### 3. Model Building
 
 **Approach A: Custom CNN Architecture**
+
 - Convolutional layers (Conv2D) for feature extraction
 - MaxPooling layers for dimensionality reduction
 - Dropout layers to prevent overfitting
@@ -44,11 +48,13 @@ This project demonstrates how artificial intelligence can support medical diagno
 - Output layer with sigmoid activation
 
 **Approach B: Transfer Learning** (Optional Enhancement)
+
 - Pre-trained models: MobileNet, VGG16, or ResNet
 - Fine-tuning on chest X-ray dataset
 - Faster training with better performance
 
 ### 4. Model Training
+
 - Optimizer: Adam or SGD
 - Loss function: Binary Crossentropy
 - Metrics: Accuracy, Precision, Recall
@@ -58,6 +64,7 @@ This project demonstrates how artificial intelligence can support medical diagno
 ### 5. Model Evaluation
 
 **Metrics**:
+
 - Accuracy
 - Precision
 - Recall
@@ -65,6 +72,7 @@ This project demonstrates how artificial intelligence can support medical diagno
 - Confusion Matrix
 
 **Visualizations**:
+
 - Training vs Validation Loss curves
 - Training vs Validation Accuracy curves
 - Sample predictions with confidence scores
@@ -127,21 +135,18 @@ unzip chest-xray-pneumonia.zip -d data/
 
 ## 💻 Usage
 
-```python
-# Load and preprocess data
-python preprocess.py
+To run the project, first train the model and then launch the Streamlit application:
 
-# Train the model
-python train.py
+```bash
+# 1. Train the CNN model
+python3 src/train.py
 
-# Evaluate the model
-python evaluate.py
-
-# Make predictions
-python predict.py --image path/to/xray.jpg
+# 2. Run the Streamlit app
+streamlit run src/app.py
 ```
 
 Or run the complete workflow in Jupyter Notebook:
+
 ```bash
 jupyter notebook notebooks/chest_xray_classification.ipynb
 ```
@@ -151,15 +156,18 @@ jupyter notebook notebooks/chest_xray_classification.ipynb
 After implementing Transfer Learning (MobileNetV2) and addressing the validation set imbalance, the model achieved high diagnostic safety standards, particularly in minimizing missed cases.
 
 ### Final Metrics (Test Set)
-| Metric | Score |
-|--------|-------|
-| **Accuracy** | **81.7%** |
-| **Pneumonia Recall (Sensitivity)** | **98.9%** |
-| **Pneumonia Precision** | **77.8%** |
-| **False Negatives** | **4** (out of 390 cases) |
+
+| Metric                             | Score                    |
+| ---------------------------------- | ------------------------ |
+| **Accuracy**                       | **81.7%**                |
+| **Pneumonia Recall (Sensitivity)** | **98.9%**                |
+| **Pneumonia Precision**            | **77.8%**                |
+| **False Negatives**                | **4** (out of 390 cases) |
 
 ### Performance Visualization
+
 The model demonstrated high stability during training after re-splitting the validation data:
+
 - **Recall Priority**: The model successfully prioritized identifying Pneumonia cases, missing only 4 out of 390 actual positive cases.
 - **Training Stability**: The Accuracy and Loss curves showed smooth convergence, indicating that the overfitting issue from earlier versions was resolved through Dropout (0.4) and Data Augmentation.
 
@@ -169,24 +177,21 @@ The model demonstrated high stability during training after re-splitting the val
 - **The Validation Trap**: The original dataset's validation folder (16 images) was too small for reliable metrics. Creating a 20% validation split from the training directory was the "turning point" for model stability.
 - **Transfer Learning Power**: Moving from a shallow custom CNN to a pre-trained **MobileNetV2** architecture allowed the model to leverage complex feature extraction, drastically reducing the False Negative rate from 37% down to 1%.
 - **Normalization Matters**: Using the specific rescaling required by MobileNetV2 ($[-1, 1]$ range) significantly improved the convergence speed and final accuracy.
+- **Ethical Considerations**: AI should assist, not replace, medical professionals in diagnosis.
 
-## 🔍 Key Insights
-
-- **Class Imbalance**: The dataset contains more pneumonia cases, requiring careful handling through augmentation and appropriate metrics
-- **Medical Context**: High recall is crucial to minimize false negatives (missing pneumonia cases)
-- **Transfer Learning**: Pre-trained models can significantly improve performance with limited medical imaging data
-- **Ethical Considerations**: AI should assist, not replace, medical professionals in diagnosis
-
-## 🚧 Challenges & Solutions
+## Challenges & Solutions
 
 **Challenge 1**: Imbalanced dataset
-- *Solution*: Data augmentation, class weights, and appropriate evaluation metrics
+
+- _Solution_: Data augmentation, class weights, and appropriate evaluation metrics
 
 **Challenge 2**: Overfitting on small dataset
-- *Solution*: Dropout, regularization, data augmentation, and early stopping
+
+- _Solution_: Dropout, regularization, data augmentation, and early stopping
 
 **Challenge 3**: Interpretability in medical context
-- *Solution*: Visualization of predictions, confusion matrix analysis, and error analysis
+
+- _Solution_: Visualization of predictions, confusion matrix analysis, and error analysis
 
 ## 🔮 Future Improvements
 
@@ -199,7 +204,7 @@ The model demonstrated high stability during training after re-splitting the val
 
 ## 📚 References
 
-- [Chest X-Ray Dataset Paper](https://www.cell.com/cell/fulltext/S0092-8674(18)30154-5)
+- [Chest X-Ray Dataset Paper](<https://www.cell.com/cell/fulltext/S0092-8674(18)30154-5>)
 - [Deep Learning for Medical Image Analysis](https://www.nature.com/articles/s41551-018-0195-4)
 - [TensorFlow Documentation](https://www.tensorflow.org/)
 - [Keras API Reference](https://keras.io/)
@@ -215,8 +220,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👤 Author
 
 **Ali Al-Taweel**
-- Email: alihaltaweel89@gmail.com
 
+- Email: alihaltaweel89@gmail.com
 
 ## 🙏 Acknowledgments
 
