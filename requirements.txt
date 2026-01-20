@@ -1,8 +1,24 @@
-tensorflow
-matplotlib
+# --- Core Deep Learning & Data (Optimized for Mac M4) ---
+tensorflow-macos==2.15.0
+tensorflow-metal==1.1.0
+numpy==1.26.4
+matplotlib==3.8.2
+Pillow==10.2.0
 kagglehub
 
-# Jupyter
+# --- Frontend & Web ---
+streamlit==1.31.0
+fastapi==0.109.0
+uvicorn==0.27.0
+python-multipart==0.0.6
+Jinja2==3.1.3
+
+# --- Jupyter / Notebook Support ---
 jupyter==1.0.0
 ipykernel==6.25.0
 ipywidgets==8.1.0
+
+# --- Utilities & Testing ---
+python-dotenv==1.0.0
+pytest==8.0.0
+httpx==0.26.0
